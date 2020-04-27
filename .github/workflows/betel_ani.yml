@@ -8,7 +8,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: aaron465/matplotlib-latest
+    runs-on: aaron465/matplotlib
     timeout-minutes: 10
     steps:
     - uses: actions/checkout@v1
