@@ -1,11 +1,10 @@
 name: betelani
 
+on: [push]
 
-#on: [push]
-
-on:
-  schedule:
-    - cron: '34 8 * * *'
+# on:
+#   schedule:
+#     - cron: '34 8 * * *'
 
 jobs:
   build:
