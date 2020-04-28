@@ -18,8 +18,8 @@ from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
 
 def make_plot(days_ago, dates, mag):
     from pylab import mpl
-    mpl.rcParams['font.sans-serif'] = ['Droid Sans Fallback']
-    mpl.rcParams['axes.unicode_minus'] = False 
+    plt.rcParams['font.sans-serif'] = ['Droid Sans Fallback']
+    plt.rcParams['axes.unicode_minus'] = False 
     print('Making plot...')
     time_span = np.max(dates) - np.min(dates)
     min_plot = 0.0
