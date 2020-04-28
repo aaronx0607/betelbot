@@ -20,6 +20,9 @@ def make_plot(days_ago, dates, mag):
         )
     #plt.rcParams['font.sans-serif']=['SimHei']    #指定默认字体 SimHei为黑体
     #plt.rcParams['axes.unicode_minus']=False   #用来正常显示负号
+    from pylab import mpl
+    plt.rcParams['font.sans-serif'] = ['Droid Sans Fallback']
+    plt.rcParams['axes.unicode_minus'] = False 
     plt.scatter(days_ago, mag, s=5, color='blue', alpha=0.5)
 
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
