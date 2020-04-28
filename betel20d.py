@@ -25,7 +25,7 @@ def make_plot(days_ago, dates, mag):
         window_length=time_span/5,
         return_trend=True,
         )
-    mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    mpl.rcParams['font.sans-serif']=['Droid Sans Fallback,Times New Roman']   #指定默认字体 SimHei为黑体
     mpl.rcParams['axes.unicode_minus']=False   #用来正常显示负号
     fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
     fonten = {'family':'Times New Roman'}
@@ -33,7 +33,7 @@ def make_plot(days_ago, dates, mag):
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
     plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
     plt.ylabel(u'视星等', fontdict=fontcn)
-    mid = 1.1
+    mid = 1.0
     plt.ylim(mid-1, mid+1)
     plt.xlim(-1, 20)
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
