@@ -17,8 +17,6 @@ jobs:
       with:
         python-version: 3.7
     - name: Install dependencies
-      env:
-        LANG: zh_CN.UTF-8
       run: |
         fc-list :lang=zh
         pip install numpy
