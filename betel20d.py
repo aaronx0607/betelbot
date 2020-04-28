@@ -25,6 +25,7 @@ def make_plot(days_ago, dates, mag):
         window_length=time_span/5,
         return_trend=True,
         )
+    import matplotlib
     matplotlib.rcParams['font.family'] = 'sans-serif'  
     matplotlib.rcParams['font.sans-serif']='Droid Sans Fallback,Droid Sans'   #指定默认字体 SimHei为黑体
     plt.rcParams['axes.unicode_minus']=False   #用来正常显示负号
