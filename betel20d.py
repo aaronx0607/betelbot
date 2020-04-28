@@ -33,7 +33,7 @@ def make_plot(days_ago, dates, mag):
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
     plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
     plt.ylabel(u'视星等', fontdict=fontcn)
-    mid = 1
+    mid = 1.1
     plt.ylim(mid-1, mid+1)
     plt.xlim(-1, 20)
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
@@ -43,10 +43,10 @@ def make_plot(days_ago, dates, mag):
     data_last24hrs = np.where(days_ago<1)
     mean_last24hrs = biweight_location(mag[data_last24hrs])
     lumi = str(format(mean_last24hrs, '.2f'))
-    plt.text(19.5, mid+1-0.25, u"AAVSO 观测星等(肉眼) 蓝色·", color='blue', fontdict=fontcn)
-    plt.text(19.5, mid+1-0.15, u"AAVSO 观测星等(CCD) 黑色×", color='black', fontdict=fontcn)
+    plt.text(19.5, mid+1-0.25, u"AAV肉眼 观测星等 蓝色○", color='blue')
+    plt.text(19.5, mid+1-0.15, u"CCD 观测星等 黑色×", color='black', fontdict=fontcn)
     plt.text(19.5, mid+1-0.05, u"局部加权拟合 红色线", color='red', fontdict=fontcn)
-    plt.text(19.5, mid-1+0.1, u'#参宿四的亮度为 ' + lumi + r" 等，于 " + date_text + r" 由 天文通 用 @betelbot 生成")
+    plt.text(19.5, mid-1+0.1, u'#参宿四的星等为：' + lumi + r" 等，于 " + date_text + r" 由 天文通 译制")
     plt.savefig(plot_file, bbox_inches='tight', dpi=300)
     print('Done.')
 
