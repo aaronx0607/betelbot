@@ -25,15 +25,15 @@ def make_plot(days_ago, dates, mag):
         window_length=time_span/5,
         return_trend=True,
         )
-    import matplotlib
-    matplotlib.rcParams['font.family'] = 'sans-serif'  
-    matplotlib.rcParams['font.sans-serif']='Droid Sans Fallback,Droid Sans'   #指定默认字体 SimHei为黑体
-    plt.rcParams['axes.unicode_minus']=False   #用来正常显示负号
+    mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    mpl.rcParams['axes.unicode_minus']=False   #用来正常显示负号
+    fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
+    fonten = {'family':'Times New Roman'}
     plt.scatter(days_ago, mag, s=5, color='blue', alpha=0.5)
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
-    plt.xlabel(r'从今天往回数的天数')
-    plt.ylabel(r'视星等')
-    mid = 1.10
+    plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
+    plt.ylabel(u'视星等', fontdict=fontcn)
+    mid = 1
     plt.ylim(mid-1, mid+1)
     plt.xlim(-1, 20)
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
@@ -43,10 +43,10 @@ def make_plot(days_ago, dates, mag):
     data_last24hrs = np.where(days_ago<1)
     mean_last24hrs = biweight_location(mag[data_last24hrs])
     lumi = str(format(mean_last24hrs, '.2f'))
-    plt.text(19.5, mid+1-0.25, u"AAVSO 观测星等(肉眼) 蓝色·", color='blue')
-    plt.text(19.5, mid+1-0.15, r"AAVSO 观测星等(CCD) 黑色×", color='black')
-    plt.text(19.5, mid+1-0.05, r"局部加权拟合 红色线", color='red')
-    plt.text(19.5, mid-1+0.1, r'#参宿四的亮度为 ' + lumi + r" 等，于 " + date_text + r" 由 天文通 用 @betelbot 生成")
+    plt.text(19.5, mid+1-0.25, u"AAVSO 观测星等(肉眼) 蓝色·", color='blue', fontdict=fontcn)
+    plt.text(19.5, mid+1-0.15, u"AAVSO 观测星等(CCD) 黑色×", color='black', fontdict=fontcn)
+    plt.text(19.5, mid+1-0.05, u"局部加权拟合 红色线", color='red', fontdict=fontcn)
+    plt.text(19.5, mid-1+0.1, u'#参宿四的亮度为 ' + lumi + r" 等，于 " + date_text + r" 由 天文通 用 @betelbot 生成")
     plt.savefig(plot_file, bbox_inches='tight', dpi=300)
     print('Done.')
 
