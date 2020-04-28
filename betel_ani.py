@@ -15,12 +15,10 @@ from sklearn import gaussian_process
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
 
-def conf_zh(font_name):
-    from pylab import mpl
-    mpl.rcParams['font.sans-serif'] = [font_name]
-    mpl.rcParams['axes.unicode_minus'] = False 
 
 def make_plot(days_ago, dates, mag):
+    plt.rcParams['font.sans-serif'] = ['Droid Sans Fallback']
+    plt.rcParams['axes.unicode_minus'] = False 
     print('Making plot...')
     time_span = np.max(dates) - np.min(dates)
     min_plot = 0.0
@@ -112,10 +110,7 @@ for page in pages:
 dates = all_dates
 mags = all_mags
 days_ago = np.max(dates) - dates
-
-if __name__ == "__main__":
-    conf_zh("Droid Sans Fallback")
-    make_plot(days_ago, dates, mags)
+make_plot(days_ago, dates, mags)
 
 # Make animation
 frames = []
