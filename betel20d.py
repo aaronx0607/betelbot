@@ -1,7 +1,7 @@
 import numpy as np
 import datetime
-from pylab import *
-import random
+#from pylab import *
+#import random
 from matplotlib import pyplot as plt
 from wotan import flatten
 from betellib import build_string, get_mags_from_AAVSO
@@ -9,10 +9,10 @@ import requests
 from bs4 import BeautifulSoup
 from astropy.stats import biweight_location
 
-def conf_zh(font_name):
-    from pylab import mpl
-    mpl.rcParams['font.sans-serif'] = [font_name]
-    mpl.rcParams['axes.unicode_minus'] = False 
+#def conf_zh(font_name):
+ #   from pylab import mpl
+  #  mpl.rcParams['font.sans-serif'] = [font_name]
+   # mpl.rcParams['axes.unicode_minus'] = False 
 
 def make_plot(days_ago, dates, mag):
     print('Making plot...')
@@ -24,8 +24,8 @@ def make_plot(days_ago, dates, mag):
         window_length=time_span/3,
         return_trend=True,
         )
-    #plt.rcParams['font.sans-serif']=['SimHei']    #指定默认字体 SimHei为黑体
-    #plt.rcParams['axes.unicode_minus']=False   #用来正常显示负号
+    plt.rcParams['font.sans-serif']=['Droid Sans Fallback']    #指定默认字体 SimHei为黑体
+    plt.rcParams['axes.unicode_minus']=False   #用来正常显示负号
     plt.scatter(days_ago, mag, s=5, color='blue', alpha=0.5)
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
     plt.xlabel(u'从今天往回数的天数')
@@ -107,6 +107,6 @@ dates = all_dates
 mags = all_mags
 days_ago = np.max(dates) - dates
 text = build_string(days_ago, mags)
-if __name__ == "__main__":
-    conf_zh("Droid Sans Fallback")
-    make_plot(days_ago, dates, mags)
+#if __name__ == "__main__":
+ #   conf_zh("Droid Sans Fallback")
+make_plot(days_ago, dates, mags)
