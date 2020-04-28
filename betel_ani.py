@@ -18,6 +18,7 @@ from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
 
 def make_plot(days_ago, dates, mag):
     print('Making plot...')
+    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
     time_span = np.max(dates) - np.min(dates)
     min_plot = 0.0
     max_plot = 2
