@@ -61,7 +61,7 @@ def make_plot(days_ago, dates, mag):
         plt.gca().invert_yaxis()
         date_text = datetime.datetime.now().strftime("%Y-%m-%d")
         plt.text(95, min_plot+0.1, u'每日观测数据合成', ha='right', fontdict=fontcn)
-        plt.text(60, min_plot+0.2, u'由 天文通 译制于 ', ha='right', fontdict=fontcn)
+        plt.text(60, min_plot+0.2, u'由 天文通 译制于', ha='right', fontdict=fontcn)
         plt.text(95, min_plot+0.2, date_text, ha='right', fontdict=fonten)
         use_days = 60-missing_days
         X = np.array(nights+0.5)
