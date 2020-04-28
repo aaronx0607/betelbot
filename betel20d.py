@@ -36,7 +36,7 @@ def make_plot(days_ago, dates, mag):
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
     plt.gca().invert_yaxis()
     plt.gca().invert_xaxis()
-    date_text = datetime.datetime.now().strftime("%d %b %Y")
+    date_text = datetime.datetime.now().strftime("%Y-%m-%d  ")
     data_last24hrs = np.where(days_ago<1)
     mean_last24hrs = biweight_location(mag[data_last24hrs])
     lumi = str(format(mean_last24hrs, '.2f'))
