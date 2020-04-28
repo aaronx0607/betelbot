@@ -20,6 +20,7 @@ jobs:
       env:
         LANG: zh_CN.UTF-8
       run: |
+        fc-list :lang=zh
         pip install numpy
         pip install twython bs4 wotan matplotlib requests transitleastsquares scikit-learn Pillow astropy
     - name: betel
