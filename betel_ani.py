@@ -15,6 +15,10 @@ from sklearn import gaussian_process
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
 
+def conf_zh(font_name):
+    from pylab import mpl
+    mpl.rcParams['font.sans-serif'] = [font_name]
+    mpl.rcParams['axes.unicode_minus'] = False 
 
 def make_plot(days_ago, dates, mag):
     print('Making plot...')
@@ -49,16 +53,16 @@ def make_plot(days_ago, dates, mag):
         daily_mags = daily_mags_all.copy()[missing_days:]
         errors = errors_all.copy()[missing_days:]
         plt.errorbar(-(nights+0.5), daily_mags, yerr=errors, fmt='.k', alpha=0.5)
-        plt.xlabel('从今天算起的天数')
-        plt.ylabel('视星等')
+        plt.xlabel(u'从今天算起的天数')
+        plt.ylabel(u'视星等')
         mid = biweight_location(mag)
         plt.ylim(min_plot, max_plot)
         plt.xlim(-100, 100)
         plt.gca().invert_yaxis()
         date_text = datetime.datetime.now().strftime("%d %b %Y")
-        plt.text(95, min_plot+0.1, 'AAVSO每日观测数据合成', ha='right')
-        plt.text(95, min_plot+0.2, '高斯过程回归, Matern 3/2 核', ha='right')
-        plt.text(95, min_plot+0.3, '天文通 用 @betelbot 更新于 ' + date_text, ha='right')
+        plt.text(95, min_plot+0.1, u'AAVSO每日观测数据合成', ha='right')
+        plt.text(95, min_plot+0.2, u'高斯过程回归, Matern 3/2 核', ha='right')
+        plt.text(95, min_plot+0.3, u'天文通 用 @betelbot 更新于 ' + date_text, ha='right')
         use_days = 60-missing_days
         X = np.array(nights+0.5)
         X = X[:use_days]
@@ -109,7 +113,10 @@ for page in pages:
 dates = all_dates
 mags = all_mags
 days_ago = np.max(dates) - dates
-make_plot(days_ago, dates, mags)
+
+if __name__ == "__main__":
+    conf_zh("Droid Sans Fallback")
+    make_plot(days_ago, dates, mags)
 
 # Make animation
 frames = []
