@@ -33,7 +33,7 @@ def make_plot(days_ago, dates, mag):
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
     plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
     plt.ylabel(u'视星等', fontdict=fontcn)
-    mid = 1.1
+    mid = 0.7
     plt.ylim(mid-1, mid+1)
     plt.xlim(-1, 20)
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
@@ -50,10 +50,10 @@ def make_plot(days_ago, dates, mag):
     plt.text(17.5, mid+1-0.15, u"观测星等 黑色", color='black', fontdict=fontcn)
     plt.text(13, mid+1-0.15, u"×", color='black', fontdict=fonten)
     plt.text(19.5, mid+1-0.05, u"局部加权拟合 红色线", color='red', fontdict=fontcn)
-    plt.text(10.5, mid-1+0.1, u'目前参宿四的星等为 ', fontdict=fontcn)
-    plt.text(5, mid-1+0.1, lumi, fontdict=fonten)
-    plt.text(10.5, mid-1+0.2, u" 由 天文通 译制于", fontdict=fontcn)
-    plt.text(5.5, mid-1+0.2, date_text, fontdict=fonten)
+    plt.text(7.5, mid-1+0.1, u'目前参宿四的星等为 ', fontdict=fontcn)
+    plt.text(2, mid-1+0.1, lumi, fontdict=fonten)
+    plt.text(7.5, mid-1+0.2, u"由 天文通 译制于", fontdict=fontcn)
+    plt.text(2.5, mid-1+0.2, date_text, fontdict=fonten)
     plt.savefig(plot_file, bbox_inches='tight', dpi=300)
     print('Done.')
 
