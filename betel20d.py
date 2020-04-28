@@ -1,5 +1,7 @@
 import numpy as np
 import datetime
+from pylab import *
+import random
 from matplotlib import pyplot as plt
 from wotan import flatten
 from betellib import build_string, get_mags_from_AAVSO
@@ -13,8 +15,6 @@ def conf_zh(font_name):
     mpl.rcParams['axes.unicode_minus'] = False 
 
 def make_plot(days_ago, dates, mag):
-    from pylab import *
-    import random
     print('Making plot...')
     time_span = np.max(dates) - np.min(dates)
     flatten_lc, trend_lc = flatten(
