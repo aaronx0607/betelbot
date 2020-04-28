@@ -5,6 +5,7 @@ import PIL
 import numpy as np
 from PIL import Image, ImageDraw
 from matplotlib import pyplot as plt
+from pylab import mpl
 from astropy.stats import biweight_location
 
 
@@ -17,9 +18,10 @@ from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
 
 
 def make_plot(days_ago, dates, mag):
-    from pylab import mpl
-    plt.rcParams['font.sans-serif'] = ['Droid Sans Fallback']
-    plt.rcParams['axes.unicode_minus'] = False 
+    mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    mpl.rcParams['axes.unicode_minus']=False   #用来正常显示负号
+    fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
+    fonten = {'family':'Times New Roman'}
     print('Making plot...')
     time_span = np.max(dates) - np.min(dates)
     min_plot = 0.0
@@ -51,16 +53,16 @@ def make_plot(days_ago, dates, mag):
         daily_mags = daily_mags_all.copy()[missing_days:]
         errors = errors_all.copy()[missing_days:]
         plt.errorbar(-(nights+0.5), daily_mags, yerr=errors, fmt='.k', alpha=0.5)
-        plt.xlabel(u'从今天算起的天数')
-        plt.ylabel(u'视星等')
+        plt.xlabel(u'从今天算起的天数', fontdict=fontcn)
+        plt.ylabel(u'视星等', fontdict=fontcn)
         mid = biweight_location(mag)
         plt.ylim(min_plot, max_plot)
         plt.xlim(-100, 100)
         plt.gca().invert_yaxis()
-        date_text = datetime.datetime.now().strftime("%d %b %Y")
-        plt.text(95, min_plot+0.1, u'AAVSO每日观测数据合成', ha='right')
-        plt.text(95, min_plot+0.2, u'高斯过程回归, Matern 3/2 核', ha='right')
-        plt.text(95, min_plot+0.3, u'天文通 用 @betelbot 更新于 ' + date_text, ha='right')
+        date_text = datetime.datetime.now().strftime("%Y-%m-%d")
+        plt.text(95, min_plot+0.1, u'每日观测数据合成', ha='right', fontdict=fontcn)
+        plt.text(60, min_plot+0.2, u'由 天文通 译制于 ', ha='right', fontdict=fontcn)
+        plt.text(95, min_plot+0.2, date_text, ha='right', fontdict=fonten)
         use_days = 60-missing_days
         X = np.array(nights+0.5)
         X = X[:use_days]
