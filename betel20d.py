@@ -7,8 +7,14 @@ import requests
 from bs4 import BeautifulSoup
 from astropy.stats import biweight_location
 
+def conf_zh(font_name):
+    from pylab import mpl
+    mpl.rcParams['font.sans-serif'] = [font_name]
+    mpl.rcParams['axes.unicode_minus'] = False 
 
 def make_plot(days_ago, dates, mag):
+    from pylab import *
+    import random
     print('Making plot...')
     time_span = np.max(dates) - np.min(dates)
     flatten_lc, trend_lc = flatten(
@@ -20,11 +26,7 @@ def make_plot(days_ago, dates, mag):
         )
     #plt.rcParams['font.sans-serif']=['SimHei']    #指定默认字体 SimHei为黑体
     #plt.rcParams['axes.unicode_minus']=False   #用来正常显示负号
-    from pylab import mpl
-    plt.rcParams['font.sans-serif'] = ['Droid Sans Fallback']
-    plt.rcParams['axes.unicode_minus'] = False 
     plt.scatter(days_ago, mag, s=5, color='blue', alpha=0.5)
-
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
     plt.xlabel(u'从今天往回数的天数')
     plt.ylabel(u'视星等')
@@ -105,5 +107,6 @@ dates = all_dates
 mags = all_mags
 days_ago = np.max(dates) - dates
 text = build_string(days_ago, mags)
-if text is not None:
+if __name__ == "__main__":
+    conf_zh("Droid Sans Fallback")
     make_plot(days_ago, dates, mags)
