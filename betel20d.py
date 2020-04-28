@@ -25,7 +25,7 @@ def make_plot(days_ago, dates, mag):
         window_length=time_span/5,
         return_trend=True,
         )
-    mpl.rcParams['font.sans-serif']=['Droid Sans Fallback,Times New Roman']   #指定默认字体 SimHei为黑体
+    mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
     mpl.rcParams['axes.unicode_minus']=False   #用来正常显示负号
     fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
     fonten = {'family':'Times New Roman'}
@@ -43,10 +43,17 @@ def make_plot(days_ago, dates, mag):
     data_last24hrs = np.where(days_ago<1)
     mean_last24hrs = biweight_location(mag[data_last24hrs])
     lumi = str(format(mean_last24hrs, '.2f'))
-    plt.text(19.5, mid+1-0.25, u"AAV肉眼 观测星等 蓝色○", color='blue')
-    plt.text(19.5, mid+1-0.15, u"CCD 观测星等 黑色×", color='black', fontdict=fontcn)
+    plt.text(19.5, mid+1-0.25, u"肉眼 ", color='blue', fontdict=fontcn)
+    plt.text(22.5, mid+1-0.25, u"观测星等 蓝色", color='blue', fontdict=fontcn)
+    plt.text(25.5, mid+1-0.25, u"○", color='blue', fontdict=fonten)
+    plt.text(19.5, mid+1-0.15, u"CCD ", color='black', fontdict=fonten)
+    plt.text(22.5, mid+1-0.15, u"观测星等 黑色", color='black', fontdict=fontcn)
+    plt.text(25.5, mid+1-0.15, u"×", color='black', fontdict=fonten)
     plt.text(19.5, mid+1-0.05, u"局部加权拟合 红色线", color='red', fontdict=fontcn)
-    plt.text(19.5, mid-1+0.1, u'#参宿四的星等为：' + lumi + r" 等，于 " + date_text + r" 由 天文通 译制")
+    plt.text(25.5, mid-1+0.1, u'目前参宿四的星等为 ', fontdict=fontcn)
+    plt.text(30.5, mid-1+0.1, lumi, fontdict=fonten)
+    plt.text(25.5, mid-1+0.2, u" 由 天文通 译制于", fontdict=fontcn)
+    plt.text(30.5, mid-1+0.2, date_text, fontdict=fonten)
     plt.savefig(plot_file, bbox_inches='tight', dpi=300)
     print('Done.')
 
