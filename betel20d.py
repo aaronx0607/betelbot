@@ -33,8 +33,8 @@ def make_plot(days_ago, dates, mag):
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
     plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
     plt.ylabel(u'视星等', fontdict=fontcn)
-    mid = 0.75
-    plt.ylim(mid-1, mid+1)
+    mid = 0.6
+    plt.ylim(mid-0.7, mid+0.7)
     plt.xlim(-1, 20)
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
     plt.gca().invert_yaxis()
@@ -43,7 +43,7 @@ def make_plot(days_ago, dates, mag):
     data_last24hrs = np.where(days_ago<1)
     mean_last24hrs = biweight_location(mag[data_last24hrs])
     lumi = str(format(mean_last24hrs, '.2f'))
-    plt.text(19.5, mid+1-0.25, u"肉眼 ", color='blue', fontdict=fontcn)
+    plt.text(19.5, mid+1-0.25, u"裸眼 ", color='blue', fontdict=fontcn)
     plt.text(18, mid+1-0.25, u"观测星等 蓝色", color='blue', fontdict=fontcn)
     plt.text(14, mid+1-0.25, u"○", color='blue', fontdict=fonten)
     plt.text(19.5, mid+1-0.15, u"CCD ", color='black', fontdict=fonten)
