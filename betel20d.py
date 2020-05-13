@@ -34,7 +34,7 @@ def make_plot(days_ago, dates, mag):
     plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
     plt.ylabel(u'视星等', fontdict=fontcn)
     mid = 0.6
-    plt.ylim(mid-0.7, mid+0.7)
+    plt.ylim(mid-1, mid+1)
     plt.xlim(-1, 20)
     plt.plot(days_ago, trend_lc, color='red', linewidth=1)
     plt.gca().invert_yaxis()
