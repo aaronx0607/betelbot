@@ -4,7 +4,7 @@ name: betelani
 
 on:
   schedule:
-    - cron: '01 00 * * *'
+    - cron: '38 12 * * *'
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
       run: |
         fc-list :lang=zh
         pip install numpy
-        pip install twython bs4 wotan matplotlib requests transitleastsquares scikit-learn Pillow astropy
+        pip install twython bs4 wotan matplotlib requests transitleastsquares scikit-learn Pillow astropy chineseize-matplotlib
     - name: betel
       env:
         access_token: ${{ secrets.access_token }}
