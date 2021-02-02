@@ -32,7 +32,8 @@ def make_plot(days_ago, dates, mag):
     fonten = {'family':'Times New Roman'}
     plt.scatter(days_ago, mag, s=5, color='blue', alpha=0.5)
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
-    plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
+    #plt.xlabel(u'从今天往回数的天数', fontdict=fontcn)
+    plt.xlabel('从今天往回数的天数')
     plt.ylabel(u'视星等', fontdict=fontcn)
     mid = 0.6
     plt.ylim(mid-1, mid+1)
