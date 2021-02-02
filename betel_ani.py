@@ -5,6 +5,7 @@ import PIL
 import numpy as np
 from PIL import Image, ImageDraw
 from matplotlib import pyplot as plt
+import chineseize_matplotlib
 from pylab import mpl
 from astropy.stats import biweight_location
 
