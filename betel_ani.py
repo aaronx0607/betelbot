@@ -19,9 +19,11 @@ from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
 
 
 def make_plot(days_ago, dates, mag):
-    mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    #mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    mpl.rcParams['font.sans-serif']=['SimHei'] 
     mpl.rcParams['axes.unicode_minus']=False   #用来正常显示负号
-    fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
+    #fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
+    fontcn = {'family': 'SimHei'} # 1pt = 4/3px
     fonten = {'family':'Times New Roman'}
     print('Making plot...')
     time_span = np.max(dates) - np.min(dates)
