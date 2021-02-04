@@ -19,9 +19,9 @@ jobs:
     - name: Install dependencies
       run: |
         fc-list :lang=zh
-        pipenv install chineseize-matplotlib
         pip install numpy
-        pip install twython bs4 wotan matplotlib requests transitleastsquares scikit-learn Pillow astropy chineseize-matplotlib
+        pip install chineseize-matplotlib
+        pip install twython bs4 wotan matplotlib requests transitleastsquares scikit-learn Pillow astropy 
     - name: betel
       env:
         access_token: ${{ secrets.access_token }}
