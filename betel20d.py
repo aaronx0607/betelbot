@@ -26,9 +26,11 @@ def make_plot(days_ago, dates, mag):
         window_length=time_span/5,
         return_trend=True,
         )
-    mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    #mpl.rcParams['font.sans-serif']=['Times New Roman']   #指定默认字体 SimHei为黑体
+    mpl.rcParams['font.sans-serif']=['SimHei'] 
     mpl.rcParams['axes.unicode_minus']=False   #用来正常显示负号
-    fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
+    #fontcn = {'family': 'Droid Sans Fallback'} # 1pt = 4/3px
+    fontcn = {'family': 'SimHei'} # 1pt = 4/3px
     fonten = {'family':'Times New Roman'}
     plt.scatter(days_ago, mag, s=5, color='blue', alpha=0.5)
     plt.scatter(days_ago1, all_mags1, s=10, color='black', alpha=0.8, marker="x")
