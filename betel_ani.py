@@ -55,7 +55,8 @@ def make_plot(days_ago, dates, mag):
         errors = errors_all.copy()[missing_days:]
         plt.errorbar(-(nights+0.5), daily_mags, yerr=errors, fmt='.k', alpha=0.5)
         plt.xlabel(u'从今天算起的天数', fontdict=fontcn)
-        plt.ylabel(u'视星等', fontdict=fontcn)
+        #plt.ylabel(u'视星等', fontdict=fontcn)
+        plt.ylabel('视星等')
         mid = biweight_location(mag)
         plt.ylim(min_plot, max_plot)
         plt.xlim(-100, 100)
